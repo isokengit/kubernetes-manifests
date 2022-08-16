@@ -13,9 +13,9 @@ spec:
          app: mongodb
      spec:
        volumes:
-       - name: mydb
+       - name: hostpathvol
          hostpath:
-           path: /home/ubuntu/mongo    
+           path: /tmp/mongodbbkp    
        containers:
        - name: mongodbcontainer
          image: mongo
@@ -27,7 +27,7 @@ spec:
          - name: MONGO_INITDB_ROOT_PASSWORD
            value: devdb@123
          volumeMounts:
-         - name: mydb
+         - name: hostpathvol
            mountPath: /data/db   
 ---
 apiVersion: v1
