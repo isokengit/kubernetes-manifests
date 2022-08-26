@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+ kind: Ingress
+ metadata:
+   name: ingress-resource-1
+ spec:
+   rules:
+   - host: alert.dominion.net
+     http:
+       paths:
+       - backend:
+           serviceName: prometheus-alertmanager
+           servicePort: 80
+   - host: prometheus.dominion.net
+     http:
+       paths:
+       - backend:
+           serviceName: prometheus-server
+           servicePort: 80
+---
+- host: grafana.dominion.net
+     http:
+       paths:
+       - backend:
+           serviceName: grafana
+           servicePort: 80
